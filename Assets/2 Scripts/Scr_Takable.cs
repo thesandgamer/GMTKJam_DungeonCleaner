@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Types d'obets que le PJ peut prendre
+/// </summary>
+public enum ObjectType
+{
+    GOLD,
+    FURNITURE,
+    HAMMER,
+    BROOM,
+}
+
 public class Scr_Takable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public ObjectType ObjectType;
+    void Interacted(GameObject interactWith)
     {
-        
+        //En fonction du type d'objet auquel c'est 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

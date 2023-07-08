@@ -17,6 +17,10 @@ public class S_PlayerController : MonoBehaviour
    public event Action ev_StartMoving;
    public event Action<Vector2> ev_Move;
    public event Action ev_StopMoving;
+
+   public event Action ev_StartInteract;
+   public event Action ev_Interact;
+   public event Action ev_StopInteract;
    
 
    #endregion
@@ -26,6 +30,11 @@ public class S_PlayerController : MonoBehaviour
       
       playerInputs.CharacterControls.Move.started += context => StartMoving();
       playerInputs.CharacterControls.Move.canceled += context => StopMoving();
+
+      playerInputs.CharacterControls.Interact.started += context => ev_StartInteract?.Invoke();
+      playerInputs.CharacterControls.Interact.canceled += context => ev_StopInteract?.Invoke();
+
+      playerInputs.CharacterControls.Interact.performed += context => Interact();
 
    }
 
@@ -41,6 +50,11 @@ public class S_PlayerController : MonoBehaviour
       ev_StopMoving?.Invoke();
       moveKeyPressed = false;
       moveValue = playerInputs.CharacterControls.Move.ReadValue<Vector2>();
+   }
+
+   private void Interact()
+   {
+      ev_Interact?.Invoke();
    }
 
    private void FixedUpdate()

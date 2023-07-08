@@ -25,10 +25,7 @@ public class S_Move_Phyiscs : MonoBehaviour
         {
             RB2D = transform.parent.GetComponent<Rigidbody2D>();
         }
-    
-        
-        
-        
+
     }
 
 
@@ -55,7 +52,7 @@ public class S_Move_Phyiscs : MonoBehaviour
             speedDif = targetSpeed - new Vector2(RB2D.velocity.x,RB2D.velocity.y);
         }
         Vector2 movement = speedDif * accelRate;
-        Debug.Log("Movement: " + movement);
+        //Debug.Log("Movement: " + movement);
         if (RB)
         {
             RB.AddForce(new Vector3(movement.x,0,movement.y), ForceMode.Force);
