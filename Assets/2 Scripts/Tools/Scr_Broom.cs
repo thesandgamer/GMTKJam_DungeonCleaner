@@ -13,9 +13,19 @@ public class Scr_Broom : Scr_Tool
 
     [SerializeField] private AnimationCurve curve;
 
+    [SerializeField] private GameObject LifeBar;
+     private Scr_BarFiller filler;
+
 
     private GameObject cleaningObject;
-    
+
+    private void Start()
+    {
+        HideLifeBar();
+        filler = GetComponent<Scr_BarFiller>();
+        filler.SetMaxValue((float)curve.keys[curve.length-1].time);
+    }
+
     public override void Clicked(GameObject on)
     {
         
@@ -24,14 +34,34 @@ public class Scr_Broom : Scr_Tool
     public override void Pressed(GameObject on)
     {
         cleaningObject = on;
-        
+        LifeBar.SetActive(true);
+
         canWork = true;
     }
 
     public override void Released(GameObject on)
     {
+
+        Reset();
+        
+        if (LifeBar.activeSelf)
+        {
+            Invoke("HideLifeBar",1);
+        }
+    }
+
+    private void Reset()
+    {
         canWork = false;
         currentValue = 0;
+        currentTime = 0;
+        
+        filler.SetValue(0);
+    }
+
+    private void HideLifeBar()
+    {
+        LifeBar.SetActive(false);
     }
 
     private void Update()
@@ -41,9 +71,13 @@ public class Scr_Broom : Scr_Tool
             currentTime += Time.deltaTime;
             currentValue = curve.Evaluate(currentTime);
 
-            if (currentValue == curve.Evaluate(curve.length))
+            if (currentValue == curve.keys[curve.length-1].value)
             {
                 Finish();
+            }
+            else
+            {
+                filler.SetValue(currentTime);
             }
             print("Current value:" + currentValue);
         }
@@ -52,8 +86,14 @@ public class Scr_Broom : Scr_Tool
 
     void Finish()
     {
-        canWork = false;
+        print("Cleaning finish");
+        Reset();
+
+        
         cleaningObject.GetComponent<Scr_Dirt>().Interacted(gameObject);
+        
+        Invoke("HideLifeBar",1);
+
     }
     
 }

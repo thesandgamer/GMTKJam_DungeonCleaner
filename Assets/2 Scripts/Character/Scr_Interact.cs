@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class Scr_Interact : MonoBehaviour
     private Scr_Take takeComponent;
     
     private GameObject nearObject= null;
+    
+    public event Action ev_StartInteracting;
+    public event Action ev_StopInteracting;
 
     private void Awake()
     {
@@ -27,17 +31,48 @@ public class Scr_Interact : MonoBehaviour
         
     }
 
-    void StartInteract()
-    {
-        //Check
-        
-
+    private void Update()
+    {   
         //Check l'objet autour 
         RaycastHit2D hitInfo = Physics2D.CircleCast(interactLocation.position, interactRadius, Vector2.right,default,layer);
         if (hitInfo)
         {
             nearObject = hitInfo.transform.gameObject;
         }
+        else
+        {
+            nearObject = null;
+        }
+
+        if (takeComponent.objectInHand)
+        {
+            if (takeComponent.objectInHand.GetComponent<Scr_Hammer>())
+            {
+                if (nearObject)
+                {
+                    if (nearObject.GetComponent<Scr_BrokenObject>())
+                    {
+                    
+                    }
+                    else
+                    {
+                        takeComponent.objectInHand.GetComponent<Scr_Hammer>().Reset();
+                    }
+                }
+                else
+                {
+                    takeComponent.objectInHand.GetComponent<Scr_Hammer>().Reset();
+                }
+            }
+        }
+
+    }
+
+    void StartInteract()
+    {
+        //Check
+        ev_StartInteracting?.Invoke();
+
 
         
         //Interact with the near object
@@ -48,7 +83,14 @@ public class Scr_Interact : MonoBehaviour
             {
                 if (takeComponent.HaveObjectInHand())
                 {
-                    takeComponent.objectInHand.GetComponent<Scr_Tool>().Pressed(nearObject);    //L'objet en main effectue son action
+                    if (takeComponent.objectInHand.GetComponent<Scr_Tool>())
+                    {
+                        takeComponent.objectInHand.GetComponent<Scr_Tool>().Pressed(nearObject);    //L'objet en main effectue son action
+                    }
+                    else
+                    {
+                        nearObject.GetComponent<Scr_Interactible>().Interacted(takeComponent.objectInHand);
+                    }
                 }
                 else
                 {
@@ -61,6 +103,8 @@ public class Scr_Interact : MonoBehaviour
             {
                 if (nearObject.GetComponent<Scr_Takable>())
                 {
+                    //Si état à prendre de l'objet est le même que l'état du player
+                  //  if (  nearObject.GetComponent<Scr_Takable>().canBeTakenLittle )
                     takeComponent.TakeObject(nearObject);
                 }
             }
@@ -75,6 +119,8 @@ public class Scr_Interact : MonoBehaviour
             }
         }
 
+        nearObject = null;
+
     }
 
     void EndInteract()
@@ -82,8 +128,13 @@ public class Scr_Interact : MonoBehaviour
         
         if (takeComponent.HaveObjectInHand())
         {
-            takeComponent.objectInHand.GetComponent<Scr_Tool>().Released(nearObject); //L'objet en main effectue son action
+            if (takeComponent.objectInHand.GetComponent<Scr_Tool>())
+            {
+                takeComponent.objectInHand.GetComponent<Scr_Tool>().Released(nearObject); //L'objet en main effectue son action
+            }
         }
+        ev_StopInteracting?.Invoke();
+
     }
     
     private void OnEnable()

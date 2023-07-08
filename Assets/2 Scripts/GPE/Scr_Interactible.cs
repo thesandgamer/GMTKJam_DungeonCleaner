@@ -7,6 +7,7 @@ public enum InteractibleType
     CHEST,
     DOOR,
     TRAP,
+    BROKEN_OBJECT,
 }
 
 /// <summary>
@@ -14,6 +15,7 @@ public enum InteractibleType
 /// </summary>
 public class Scr_Interactible : MonoBehaviour
 {
+    public InteractibleType objectType;
     public virtual void Interacted(GameObject objectInteractedWith)
     {
         print(gameObject.name + "Have been interacted with" + (objectInteractedWith!=null ? objectInteractedWith.name : "nothing" ) );

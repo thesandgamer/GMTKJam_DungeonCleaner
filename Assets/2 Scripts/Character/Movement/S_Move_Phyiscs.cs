@@ -13,6 +13,22 @@ public class S_Move_Phyiscs : MonoBehaviour
     public Rigidbody2D RB2D { get; private set; }
 
     private Vector2 _moveInput;
+
+    private bool canMove = true;
+
+    [SerializeField] private GameObject body;
+
+
+    public void Immobilise()
+    {
+        canMove = false;
+    }
+
+    public void Remobilise()
+    {
+        canMove = true;
+    }
+    
     private void Awake()
     {
         pc = GetComponent<S_PlayerController>();
@@ -31,8 +47,15 @@ public class S_Move_Phyiscs : MonoBehaviour
 
     private void Move(Vector2 axisValues)
     {
+        if (!canMove) return;
        // Debug.Log(axisValues);
         _moveInput = axisValues;
+        if (axisValues.x != 0)
+        {
+            float value = axisValues.normalized.x > 0 ? 1 : -1;
+            body.transform.localScale = new Vector3(value,body.transform.localScale.y,body.transform.localScale.z);
+
+        }
         Run();
     }
 
