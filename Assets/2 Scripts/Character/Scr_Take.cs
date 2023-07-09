@@ -24,9 +24,10 @@ public class Scr_Take : MonoBehaviour
         objectToTake.transform.SetParent(takeLocation);
         
         objectToTake.GetComponent<Collider2D>().enabled = false;
-            
-        
-        
+        Scr_AudioPlayer.Instance.PlayTakeSound();
+
+
+
         print("object taken "+ objectToTake.name );
     }
 

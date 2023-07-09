@@ -25,13 +25,15 @@ public class Scr_Hammer : Scr_Tool
     {
         if (!on.GetComponent<Scr_BrokenObject>().broken) return;
         objectToRepair = on;
-        if (!objectToRepair.GetComponent<Scr_BrokenObject>().broken) return;
+        Scr_AudioPlayer.Instance.PlayHammerSound();
+        if (!objectToRepair.GetComponent<Scr_BrokenObject>().broken) return;        
         actualNumber++;
         _uiHammer.RemoveBubble();
         print("Object bein repared");
         if (actualNumber >= numberToActivateMax)
         {
             Finish();
+            Scr_AudioPlayer.Instance.PlaySuccessSound();
         }
     }
 

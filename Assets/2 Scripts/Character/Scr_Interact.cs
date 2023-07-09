@@ -125,15 +125,22 @@ public class Scr_Interact : MonoBehaviour
             {
                 if (nearObject.GetComponent<Scr_Takable>())
                 {
+                    
                     //Si état à prendre de l'objet est le même que l'état du player
                     if (nearObject.GetComponent<Scr_Takable>().canBeTakenState == state.BOTH)
                     {
                         takeComponent.TakeObject(nearObject);
-
+                        
                     }
                     else if (nearObject.GetComponent<Scr_Takable>().canBeTakenState == switchForm.form)
                     {
                         takeComponent.TakeObject(nearObject);
+                        Scr_AudioPlayer.Instance.PlayTakeSound();
+                    }
+                    else
+                    {
+
+                        Scr_AudioPlayer.Instance.PlayFailSound();
 
                     }
                 }
@@ -146,6 +153,7 @@ public class Scr_Interact : MonoBehaviour
             if (takeComponent.HaveObjectInHand())
             {
                 takeComponent.ReleaseObject(nearObject);
+                Scr_AudioPlayer.Instance.PlayPutSound();
             }
         }
 

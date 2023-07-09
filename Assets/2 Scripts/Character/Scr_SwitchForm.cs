@@ -37,6 +37,7 @@ public class Scr_SwitchForm : MonoBehaviour
 
     public void ChangeForm()
     {
+        Scr_AudioPlayer.Instance.PlayChangeFormSound();
         if (form == state.SMALL)
         {
             form = state.BIG;

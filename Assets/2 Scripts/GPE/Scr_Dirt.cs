@@ -13,6 +13,8 @@ public class Scr_Dirt : Scr_Interactible
         {
             print(gameObject.name + "Have been interacted with" + (objectInteractedWith != null ? objectInteractedWith.name : "nothing" ) );
             Destroy(gameObject);
+
+            Scr_AudioPlayer.Instance.PlaySuccessSound();
         }
     }
 }
