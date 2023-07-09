@@ -11,6 +11,7 @@ public class Scr_Interact : MonoBehaviour
     [SerializeField] private Transform interactLocation;
     [SerializeField] private float interactRadius = 10;
     [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask Doorlayer;
     
     private S_PlayerController pc;
     private Scr_Take takeComponent;
@@ -71,6 +72,22 @@ public class Scr_Interact : MonoBehaviour
             }
         }
 
+    }
+
+    void OpenDoor()
+    {
+        GameObject obj = null;
+        RaycastHit2D hitInfo = Physics2D.CircleCast(interactLocation.position, interactRadius, Vector2.right,default,Doorlayer);
+        if (hitInfo)
+        {
+            obj = hitInfo.transform.gameObject;
+            obj.GetComponent<Scr_Interactible>().Interacted(null);
+        }
+        else
+        {
+            obj = null;
+        }
+        
     }
 
     void StartInteract()
@@ -157,12 +174,21 @@ public class Scr_Interact : MonoBehaviour
         pc.ev_StopInteract +=  EndInteract;
 
         switchForm.ev_ChangeForm += ctx => CheckDropItem(ctx);
+        
+        pc.ev_OpenDoor +=  OpenDoor;
+
     }
     private void OnDisable()
     {
         pc.ev_Interact -= Interact;
         pc.ev_StartInteract -=  StartInteract;
         pc.ev_StopInteract -=  EndInteract;
+        
+        switchForm.ev_ChangeForm -= ctx => CheckDropItem(ctx);
+
+        
+        pc.ev_OpenDoor -=  OpenDoor;
+
     }
 
     void CheckDropItem(state state)

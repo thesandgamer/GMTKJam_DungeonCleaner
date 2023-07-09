@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3588378023509113386}
   - component: {fileID: 4312817900014268930}
   - component: {fileID: 7249902928262083473}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: DoorClose
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4976604593700447376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: OpenLocation
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150252085654686667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CloseLocation
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}

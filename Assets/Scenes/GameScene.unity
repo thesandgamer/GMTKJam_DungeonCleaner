@@ -41350,6 +41350,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1734344109095314407, guid: 96af80c17490c484f891c848fca0f562, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551786403031941860, guid: 96af80c17490c484f891c848fca0f562, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3675922051613724751, guid: 96af80c17490c484f891c848fca0f562, type: 3}
       propertyPath: m_Name
       value: Trap
@@ -41397,6 +41405,10 @@ PrefabInstance:
     - target: {fileID: 4904914924238599146, guid: 96af80c17490c484f891c848fca0f562, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354459443164624423, guid: 96af80c17490c484f891c848fca0f562, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
