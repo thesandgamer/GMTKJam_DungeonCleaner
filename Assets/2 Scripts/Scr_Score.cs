@@ -16,10 +16,10 @@ public class Scr_Score : MonoBehaviour
     
     private void Start()
     {
-        bloodNumber = FindObjectsOfType<Scr_Trap>().Length;
+        bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
         
        // float score = CalculateScore();
-       Debug.Log("Score: "+CalculateScore());
+      // Debug.Log("Score: "+CalculateScore());
 
     }
 
@@ -46,8 +46,8 @@ public class Scr_Score : MonoBehaviour
         chestScore /= chests.Length;
         
         ///----------Blood Score
-        float bloodScore = bloodNumber - FindObjectsOfType<Scr_Trap>().Length;
-        bloodScore /= bloodNumber;
+        float bloodScore = bloodNumber / FindObjectsOfType<Scr_Dirt>().Length;
+        //bloodScore /= bloodNumber;
         
         ///----------Broken Score
         Scr_BrokenObject[] furnitures = FindObjectsOfType<Scr_BrokenObject>();
@@ -68,9 +68,13 @@ public class Scr_Score : MonoBehaviour
         }
         float doorScore = doors.Length - doorsGood;
         doorScore /= doors.Length;
-        
 
-        return doorScore +furnitureScore + chestScore +trapScore + bloodScore ;
+
+        float maxScore = 5;
+
+        float currenScore = maxScore - (doorScore + furnitureScore + chestScore + trapScore + bloodScore);
+        
+        return currenScore ;
 
     }
     
