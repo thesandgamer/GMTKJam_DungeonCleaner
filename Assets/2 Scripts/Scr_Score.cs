@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Scr_Score : MonoBehaviour
 {
     //Récupère toutes les portes
@@ -13,18 +14,26 @@ public class Scr_Score : MonoBehaviour
     //Joueur dans la salle du boss
 
     private int bloodNumber = 0;
+
+    public float score = 0;
+
+    private Scr_Timer Timer;
     
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
-        
-       // float score = CalculateScore();
-      // Debug.Log("Score: "+CalculateScore());
+
+        Timer = FindObjectOfType<Scr_Timer>();
+
+        // float score = CalculateScore();
+        // Debug.Log("Score: "+CalculateScore());
 
     }
 
-    public float CalculateScore()
+    public void CalculateScore()
     {
+        //---Boss in final room
         ///----------Trap Score
         Scr_Trap[] traps = FindObjectsOfType<Scr_Trap>();
         int trapsGood = 0;
@@ -73,12 +82,14 @@ public class Scr_Score : MonoBehaviour
         float maxScore = 5;
 
         float currenScore = maxScore - (doorScore + furnitureScore + chestScore + trapScore + bloodScore);
-        
-        return currenScore ;
+
+        score = currenScore;
 
     }
-    
-    
-    
-    
+
+
+    private void OnEnable()
+    {
+        Timer.timerFinished += CalculateScore;
+    }
 }
