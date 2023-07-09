@@ -7,13 +7,18 @@ public class Scr_Trap : MonoBehaviour
 {
     public bool armed = false;
 
+    [SerializeField] private Sprite retractedSrpite;
+    [SerializeField] private Sprite exitSrpite;
+    
+    [SerializeField] private List<SpriteRenderer> sprites;
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (armed)
+        if (!armed)
         {
             if (other.GetComponent<Scr_PlayerManager>())
             {
-                armed = false;
+                Desarm();
                 other.GetComponent<Scr_PlayerManager>().SlowDown();
             }
         }
@@ -25,6 +30,24 @@ public class Scr_Trap : MonoBehaviour
         {
             other.GetComponent<Scr_PlayerManager>().NormalSpeed();
 
+        }
+    }
+
+    public void Desarm()
+    {
+        armed = false;
+        foreach (var sprite in sprites)
+        {
+            sprite.sprite = exitSrpite;
+        }
+    }
+
+    public void Rearm()
+    {
+        armed = true;
+        foreach (var sprite in sprites)
+        {
+            sprite.sprite = retractedSrpite;
         }
     }
 }

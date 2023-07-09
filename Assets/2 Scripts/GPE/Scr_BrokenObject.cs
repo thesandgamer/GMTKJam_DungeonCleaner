@@ -9,7 +9,7 @@ public class Scr_BrokenObject : Scr_Interactible
     [SerializeField] private SpriteRenderer sprite;
 
     [SerializeField] private Sprite normalSprite;
-    [SerializeField] private Sprite brokenSprite;
+
     
     
     
