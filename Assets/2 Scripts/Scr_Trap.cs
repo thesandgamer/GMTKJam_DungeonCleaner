@@ -11,7 +11,25 @@ public class Scr_Trap : MonoBehaviour
     [SerializeField] private Sprite exitSrpite;
     
     [SerializeField] private List<SpriteRenderer> sprites;
-    
+
+    private void Awake()
+    {
+        if (armed)
+        {
+            foreach (var sprite in sprites)
+            {
+                sprite.sprite = retractedSrpite;
+            }
+        }
+        else
+        {
+            foreach (var sprite in sprites)
+            {
+                sprite.sprite = exitSrpite;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!armed)
