@@ -20,6 +20,8 @@ public class S_Move_Phyiscs : MonoBehaviour
 
     public float currentSpeed ;
 
+    [SerializeField] private Animator _animator;
+
 
     public void Immobilise()
     {
@@ -59,14 +61,25 @@ public class S_Move_Phyiscs : MonoBehaviour
 
     private void Move(Vector2 axisValues)
     {
+
         if (!canMove) return;
        // Debug.Log(axisValues);
         _moveInput = axisValues;
+        
+        if (axisValues != Vector2.zero)
+        {
+            _animator.speed = 1;
+        }
+        else
+        {
+            _animator.speed = 0;
+        }
+        
         if (axisValues.x != 0)
         {
            // body.flipY = axisValues.normalized.x > 0 ? false : true;
 
-            float value = axisValues.normalized.x > 0 ? 1 : -1; 
+            float value = axisValues.normalized.x > 0 ? .3f : -.3f; 
             body.transform.localScale = new Vector3(value,body.transform.localScale.y,body.transform.localScale.z);
 
         }
