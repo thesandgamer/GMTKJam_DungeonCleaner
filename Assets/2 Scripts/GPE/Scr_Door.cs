@@ -32,7 +32,7 @@ public class Scr_Door : Scr_Interactible
             Door.GetComponent<BoxCollider2D>().enabled = true;
             isOpen = false;
 
-
+            Scr_AudioPlayer.Instance.PlayCloseSound();
         }
         else
         {
@@ -43,6 +43,7 @@ public class Scr_Door : Scr_Interactible
             Door.GetComponent<BoxCollider2D>().enabled = false;
             isOpen = true;
 
+            Scr_AudioPlayer.Instance.PlayOpenSound();
         }
     }
 }

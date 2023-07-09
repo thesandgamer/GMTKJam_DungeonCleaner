@@ -141,5 +141,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7205c9c07cde4a84e8fa77e3486d5229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cleanSound: {fileID: 8300000, guid: 816eb6ee0cf2975449970866b70cbbd2, type: 3}
-  hammerSound: {fileID: 8300000, guid: fa78920dc4abf3d45b11055629c40105, type: 3}
+  cleanSound: {fileID: 8300000, guid: 1ab60ae639494da45aedcffb587f63f4, type: 3}
+  hammerSound: {fileID: 8300000, guid: 3b4d647a2f3ff084cbdaedf33246fc3b, type: 3}
+  successSound: {fileID: 8300000, guid: 17d60cbb6ba5e9e48957d7025fc2dde9, type: 3}
+  failSound: {fileID: 8300000, guid: 1a837248937207f43a461bfeadffbb93, type: 3}
+  activetrapSound: {fileID: 8300000, guid: 81763d7b3bfae674580d73f1e43a4caa, type: 3}
+  hittrapSound: {fileID: 8300000, guid: 43bc7193c1443e9468cffd3107e4bd69, type: 3}
+  freetrapSound: {fileID: 8300000, guid: 9a4f6ec73b683b740994745f6b875d05, type: 3}
+  freetrapfailSound: {fileID: 8300000, guid: 5aa22c0806552e3489692f3313181de5, type: 3}
+  freetrapsuccessSound: {fileID: 8300000, guid: 0cacd5bede7e90c4aa6ce0b98006e443, type: 3}
+  putcoinsSound: {fileID: 8300000, guid: dc8e93f2629555841a0f72bf90fa6625, type: 3}
+  takecoinsSound: {fileID: 8300000, guid: fa78920dc4abf3d45b11055629c40105, type: 3}
+  dooropenSound: {fileID: 8300000, guid: 9bc18939d9ee6ff42b9119988fdcee0e, type: 3}
+  doorcloseSound: {fileID: 8300000, guid: dbbdaa1c4cb0e7e41a6b64e8a6950f86, type: 3}
+  putobjectSound: {fileID: 8300000, guid: e00e3e9cb32c15b4cb45b2123df8b36f, type: 3}
+  takeobjectSound: {fileID: 8300000, guid: b8bb3945fc84cde4cb4756f9e02d1e84, type: 3}
+  activetrapdoorSound: {fileID: 8300000, guid: 4783697c13af0374190e9cb8dbe3e0de, type: 3}
+  trapdoorTPSound: {fileID: 8300000, guid: 485a09bcbaf602d4a88d7c8b42b98d9b, type: 3}
+  step1Sound: {fileID: 8300000, guid: 8dfdd5412c74b0246b31ea11ec3c192a, type: 3}
+  step2Sound: {fileID: 8300000, guid: 4f7ac2bd02ecb554a8b6845e0385a880, type: 3}
+  buttonhoverSound: {fileID: 8300000, guid: 1b39f469df444f74dbfa18b316268dc2, type: 3}
+  buttonpressSound: {fileID: 8300000, guid: e5f1093e5cbb11942b7ae2a1012dad6c, type: 3}
+  changeformSound: {fileID: 8300000, guid: 31cf1d84ebe29f4498b57202e1035326, type: 3}
+  timertickSound: {fileID: 8300000, guid: 8c300a0149f68104cb85971fa4360c73, type: 3}
+  loseSound: {fileID: 8300000, guid: 0b4b487435940bb42b4a0161639cb4f3, type: 3}
+  winSound: {fileID: 8300000, guid: 169bd4d580f9d344da07cb73ced21751, type: 3}
+  grumpySound: {fileID: 8300000, guid: 60dbd2d4aa46f39449e5ba3cf3c61819, type: 3}
+  happySound: {fileID: 8300000, guid: b7eaa589161dd5042ae42b3366fb1b02, type: 3}
+  starsSound: {fileID: 8300000, guid: 0595b4d1eab74e44da54a245a5d1ce35, type: 3}
+  transitionSound: {fileID: 8300000, guid: 093e6da2ae98bc949a8c3f813bb337a8, type: 3}

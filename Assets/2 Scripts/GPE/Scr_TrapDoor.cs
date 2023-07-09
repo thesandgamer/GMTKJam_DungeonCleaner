@@ -43,5 +43,6 @@ public class Scr_TrapDoor : Scr_Interactible
     {
         player.transform.position = trapGoTo.transform.position;
 
+        Scr_AudioPlayer.Instance.PlayTrapdoorTPSound();
     }
 }
