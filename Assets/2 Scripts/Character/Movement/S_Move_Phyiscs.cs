@@ -90,27 +90,20 @@ public class S_Move_Phyiscs : MonoBehaviour
     void Run()
     {
         Vector2 targetSpeed = _moveInput * currentSpeed;
-        float accelRate;
-        accelRate = (Mathf.Abs(targetSpeed.x) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
+        Vector2 accelRate;
+        float accX =(Mathf.Abs(targetSpeed.x) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
+        float accY =(Mathf.Abs(targetSpeed.y) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
+        accelRate = new Vector2(accX,accY);
+        
         Vector2 speedDif;
-        if (RB)
-        {
-            speedDif = targetSpeed - new Vector2(RB.velocity.x,RB.velocity.z);
-        }
-        else
-        {
-            speedDif = targetSpeed - new Vector2(RB2D.velocity.x,RB2D.velocity.y);
-        }
+
+        
+        speedDif = targetSpeed - new Vector2(RB2D.velocity.x,RB2D.velocity.y);
         Vector2 movement = speedDif * accelRate;
         //Debug.Log("Movement: " + movement);
-        if (RB)
-        {
-            RB.AddForce(new Vector3(movement.x,0,movement.y), ForceMode.Force);
-        }
-        else
-        {
-            RB2D.AddForce(new Vector3(movement.x,movement.y,0));
-        }
+        
+        RB2D.AddForce(new Vector2(movement.x,movement.y));
+        
 
 
     }
