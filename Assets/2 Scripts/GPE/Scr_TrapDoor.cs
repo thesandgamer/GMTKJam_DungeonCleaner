@@ -27,6 +27,10 @@ public class Scr_TrapDoor : Scr_Interactible
 
             Invoke("ExitTrapDoor",2);
         }
+        else
+        {
+            Scr_AudioPlayer.Instance.PlayFailSound();
+        }
     }
 
     private void GoToTrapDoor()
