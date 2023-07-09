@@ -25,6 +25,8 @@ public class S_PlayerController : MonoBehaviour
    public event Action ev_StopInteract;
 
    public event Action ev_SwitchForm;
+
+   public event Action ev_OpenDoor;
    
 
    #endregion
@@ -42,8 +44,17 @@ public class S_PlayerController : MonoBehaviour
       
       playerInputs.CharacterControls.Switch.performed += context => SwichForm();
       
+      playerInputs.CharacterControls.OpenDoor.performed += context => OpenDoor();
+
+      
       
 
+   }
+
+   private void OpenDoor()
+   {
+      if (immobilise) return;
+      ev_OpenDoor?.Invoke();
    }
 
    private void SwichForm()

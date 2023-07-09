@@ -22,6 +22,7 @@ public class Scr_TrapActivator : Scr_Interactible
     private void RearmTrap()
     {
         trap.Rearm();
+        GetComponent<BoxCollider2D>().enabled = false;
 
     }
 }

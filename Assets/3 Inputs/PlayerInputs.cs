@@ -53,6 +53,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenDoor"",
+                    ""type"": ""Button"",
+                    ""id"": ""59a44566-685d-44d1-b16f-8ba3aa932f72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49bf3e66-8e12-4bc3-b251-aaf7a7fb912a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenDoor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,6 +180,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
         m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControls_Switch = m_CharacterControls.FindAction("Switch", throwIfNotFound: true);
+        m_CharacterControls_OpenDoor = m_CharacterControls.FindAction("OpenDoor", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -224,6 +245,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Move;
     private readonly InputAction m_CharacterControls_Interact;
     private readonly InputAction m_CharacterControls_Switch;
+    private readonly InputAction m_CharacterControls_OpenDoor;
     public struct CharacterControlsActions
     {
         private @PlayerInputs m_Wrapper;
@@ -231,6 +253,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
         public InputAction @Interact => m_Wrapper.m_CharacterControls_Interact;
         public InputAction @Switch => m_Wrapper.m_CharacterControls_Switch;
+        public InputAction @OpenDoor => m_Wrapper.m_CharacterControls_OpenDoor;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -249,6 +272,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Switch.started += instance.OnSwitch;
             @Switch.performed += instance.OnSwitch;
             @Switch.canceled += instance.OnSwitch;
+            @OpenDoor.started += instance.OnOpenDoor;
+            @OpenDoor.performed += instance.OnOpenDoor;
+            @OpenDoor.canceled += instance.OnOpenDoor;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -262,6 +288,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Switch.started -= instance.OnSwitch;
             @Switch.performed -= instance.OnSwitch;
             @Switch.canceled -= instance.OnSwitch;
+            @OpenDoor.started -= instance.OnOpenDoor;
+            @OpenDoor.performed -= instance.OnOpenDoor;
+            @OpenDoor.canceled -= instance.OnOpenDoor;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -293,5 +322,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSwitch(InputAction.CallbackContext context);
+        void OnOpenDoor(InputAction.CallbackContext context);
     }
 }
