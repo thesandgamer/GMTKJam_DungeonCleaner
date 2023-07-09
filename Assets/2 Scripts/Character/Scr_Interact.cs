@@ -37,10 +37,30 @@ public class Scr_Interact : MonoBehaviour
     private void Update()
     {   
         //Check l'objet autour 
+        /*
         RaycastHit2D hitInfo = Physics2D.CircleCast(interactLocation.position, interactRadius, Vector2.right,default,layer);
         if (hitInfo)
         {
             nearObject = hitInfo.transform.gameObject;
+        }
+        else
+        {
+            nearObject = null;
+        }*/
+        RaycastHit2D[] hitInfo = Physics2D.CircleCastAll(interactLocation.position, interactRadius, Vector2.right,default,layer);
+        if (hitInfo.Length >0)
+        {
+            RaycastHit2D bestInfo = new RaycastHit2D();
+            bestInfo.distance = 1000;
+            foreach (var info in hitInfo)
+            {
+                if (info.distance < bestInfo.distance)
+                {
+                    bestInfo = info;
+                }
+            }
+            nearObject = bestInfo.transform.gameObject;
+
         }
         else
         {
