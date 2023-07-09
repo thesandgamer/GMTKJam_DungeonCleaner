@@ -7,6 +7,7 @@ public class Scr_AudioPlayer : MonoBehaviour
     public static Scr_AudioPlayer Instance { get; private set; }
     
     private AudioSource audioSource;
+    [Header("Sounds")]
     [SerializeField] private AudioClip cleanSound;
     [SerializeField] private AudioClip hammerSound;
 

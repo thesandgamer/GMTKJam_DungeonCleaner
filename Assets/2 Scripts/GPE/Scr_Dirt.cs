@@ -15,9 +15,4 @@ public class Scr_Dirt : Scr_Interactible
             Destroy(gameObject);
         }
     }
-
-    private void OnDestroy()
-    {
-        Scr_AudioPlayer.Instance.PlayHammerSound();
-    }
 }
