@@ -12,25 +12,69 @@ public class Scr_Score : MonoBehaviour
     //Récupère tout les objest cassés
     //Joueur dans la salle du boss
 
+    private int bloodNumber = 0;
+    
     private void Start()
     {
-        CalculateScore();
+        bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
+        
+       // float score = CalculateScore();
+      // Debug.Log("Score: "+CalculateScore());
+
     }
 
     public float CalculateScore()
     {
+        ///----------Trap Score
         Scr_Trap[] traps = FindObjectsOfType<Scr_Trap>();
-
         int trapsGood = 0;
         foreach (var trap in traps)
         {
             if (trap.armed) trapsGood++;
         }
-
         float trapScore = traps.Length - trapsGood;
-        Mathf.Clamp(trapScore, 0, 1);
+        trapScore /= traps.Length;
+        
+        ///----------Chest Score
+        Scr_Chest[] chests = FindObjectsOfType<Scr_Chest>();
+        int chestsGood = 0;
+        foreach (var chest in chests)
+        {
+            if (!chest.closed) chestsGood++;
+        }
+        float chestScore = chests.Length - chestsGood;
+        chestScore /= chests.Length;
+        
+        ///----------Blood Score
+        float bloodScore = bloodNumber / FindObjectsOfType<Scr_Dirt>().Length;
+        //bloodScore /= bloodNumber;
+        
+        ///----------Broken Score
+        Scr_BrokenObject[] furnitures = FindObjectsOfType<Scr_BrokenObject>();
+        int furnitureGood = 0;
+        foreach (var furniture in furnitures)
+        {
+            if (!furniture.broken) furnitureGood++;
+        }
+        float furnitureScore = furnitures.Length - furnitureGood;
+        furnitureScore /= furnitures.Length;
+        
+        ///----------Door Score
+        Scr_Door[] doors = FindObjectsOfType<Scr_Door>();
+        int doorsGood = 0;
+        foreach (var door in doors)
+        {
+            if (!door.isOpen) doorsGood++;
+        }
+        float doorScore = doors.Length - doorsGood;
+        doorScore /= doors.Length;
 
-        return 0;
+
+        float maxScore = 5;
+
+        float currenScore = maxScore - (doorScore + furnitureScore + chestScore + trapScore + bloodScore);
+        
+        return currenScore ;
 
     }
     

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Scr_Dirt : Scr_Interactible
 {
+    
     public override void Interacted(GameObject objectInteractedWith)
     {
         if (!objectInteractedWith) return;
@@ -13,5 +15,4 @@ public class Scr_Dirt : Scr_Interactible
             Destroy(gameObject);
         }
     }
-    
 }

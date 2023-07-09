@@ -11,7 +11,7 @@ public class Scr_Chest : Scr_Interactible
 
 
 
-    private bool closed = true;
+    public bool closed = true;
     public override void Interacted(GameObject objectInteractedWith)  
     {
         if (!objectInteractedWith) return;

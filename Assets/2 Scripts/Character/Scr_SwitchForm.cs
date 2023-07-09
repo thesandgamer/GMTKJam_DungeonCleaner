@@ -19,6 +19,9 @@ public class Scr_SwitchForm : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
 
     public event Action<state> ev_ChangeForm;
+
+    [SerializeField] private Sprite bigMan;
+    [SerializeField] private Sprite smallMan;
     
 
     private void Awake()
@@ -32,13 +35,13 @@ public class Scr_SwitchForm : MonoBehaviour
         if (form == state.SMALL)
         {
             form = state.BIG;
-            _sprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            _sprite.sprite = bigMan;
             Debug.Log("BIG FORM");
         }
         else
         {
             form = state.SMALL;
-            _sprite.transform.localScale = new Vector3(1f, 1f, 1f);
+            _sprite.sprite = smallMan;
             Debug.Log("SMALL FORM");
 
 

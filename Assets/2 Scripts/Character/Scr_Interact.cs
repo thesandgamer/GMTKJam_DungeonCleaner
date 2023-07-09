@@ -167,6 +167,7 @@ public class Scr_Interact : MonoBehaviour
 
     void CheckDropItem(state state)
     {
+        if (!takeComponent.objectInHand) return;
         if (takeComponent.objectInHand.GetComponent<Scr_Takable>().canBeTakenState != state)
         {
             takeComponent.ReleaseObject(null);
