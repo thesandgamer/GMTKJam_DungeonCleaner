@@ -32,7 +32,7 @@ public class Scr_Trap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!armed)
+        if (armed)
         {
             if (other.GetComponent<Scr_PlayerManager>())
             {
