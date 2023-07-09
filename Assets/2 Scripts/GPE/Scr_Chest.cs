@@ -22,6 +22,7 @@ public class Scr_Chest : Scr_Interactible
             print(gameObject.name + "Have been interacted with" + (objectInteractedWith!=null ? objectInteractedWith.name : "nothing" ) );
             Destroy(objectInteractedWith);
             closed = false;
+            Scr_AudioPlayer.Instance.PlayPutCoinsSound();
         }
     }
     

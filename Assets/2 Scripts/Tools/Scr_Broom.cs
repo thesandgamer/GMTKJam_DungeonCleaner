@@ -47,6 +47,8 @@ public class Scr_Broom : Scr_Tool
                 canWork = true;
         
                 playerManager.Immobilise();
+
+                Scr_AudioPlayer.Instance.PlayCleanSound();
             }
 
         }

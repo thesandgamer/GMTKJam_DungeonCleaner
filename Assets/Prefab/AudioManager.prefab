@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cleanSound: {fileID: 8300000, guid: 1ab60ae639494da45aedcffb587f63f4, type: 3}
-  hammerSound: {fileID: 8300000, guid: 3b4d647a2f3ff084cbdaedf33246fc3b, type: 3}
+  hammerSound: {fileID: 8300000, guid: 57768e724f6b4324ca44149d19b08c68, type: 3}
   successSound: {fileID: 8300000, guid: 17d60cbb6ba5e9e48957d7025fc2dde9, type: 3}
   failSound: {fileID: 8300000, guid: 1a837248937207f43a461bfeadffbb93, type: 3}
   activetrapSound: {fileID: 8300000, guid: 81763d7b3bfae674580d73f1e43a4caa, type: 3}

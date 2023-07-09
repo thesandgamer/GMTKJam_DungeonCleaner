@@ -12,6 +12,7 @@ public class Scr_TrapActivator : Scr_Interactible
         if (!trap.armed) //Si le piège n'est pas déjà armé
         {
             RearmTrap();
+            Scr_AudioPlayer.Instance.PlayTrapActiveSound();
         }
         print(gameObject.name + "Have been interacted with" + (objectInteractedWith!=null ? objectInteractedWith.name : "nothing" ) );
         
