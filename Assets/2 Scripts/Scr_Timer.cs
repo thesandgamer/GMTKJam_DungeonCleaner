@@ -13,7 +13,7 @@ public struct TimeFormat
 }
 public class Scr_Timer : MonoBehaviour
 {
-    public static event Action timerFinished;
+    public event Action timerFinished;
 
     [SerializeField] private GameObject panelTimer;
 
@@ -21,6 +21,8 @@ public class Scr_Timer : MonoBehaviour
     [SerializeField] private TMP_Text secText;
 
     public TimeFormat startTime;
+
+    private Scr_LevelLoader _levelLoader;
     
     private float totalTime = 0f;
     private float levelTime;
@@ -39,6 +41,7 @@ public class Scr_Timer : MonoBehaviour
     private void Start()
     {
 
+        _levelLoader  = FindObjectOfType<Scr_LevelLoader>();
         fb = FindObjectOfType<Scr_FeedbacksManager>();
         coroutine = TimerIsRunning();
 
@@ -66,7 +69,7 @@ public class Scr_Timer : MonoBehaviour
         //Peut être éviter de faire ça
         while (true)
         {
-            if (!reachNearEnd&& totalTime <= 4)
+            if (!reachNearEnd&& totalTime <= 30)
             {
                 reachNearEnd = true;
                 TimerNearEnd();
@@ -113,6 +116,8 @@ public class Scr_Timer : MonoBehaviour
         StopCoroutine(coroutine);
         print("Stopped timer at " + Time.time);
         Destroy(panelTimer);
+        _levelLoader.LoadNextLevel();
+
         //Rajouter un FX du timer qui disparait
     }
 

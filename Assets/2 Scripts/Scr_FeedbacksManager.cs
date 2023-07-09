@@ -7,17 +7,7 @@ public class Scr_FeedbacksManager : MonoBehaviour
 {
     private Scr_Tweener_Feedbacks tweener;
 
-
-    [Header("   Frog")] 
-    [SerializeField] private GameObject fx_ToadCollected_Prefab;
-    [Header("   Toad")] 
-    [SerializeField] private GameObject fx_FrogEjected_Prefab;
-    [SerializeField] private GameObject fx_ToadBlock_Prefab;
-
-    private void OnEnable()
-    {
-
-    }
+    
 
     private void Awake()
     {
