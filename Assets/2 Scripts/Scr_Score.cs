@@ -21,6 +21,7 @@ public class Scr_Score : MonoBehaviour
     
     private void Start()
     {
+        score = 0;
         DontDestroyOnLoad(this.gameObject);
         bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
 

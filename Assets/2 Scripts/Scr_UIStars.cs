@@ -1,36 +1,58 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Scr_UIStars : MonoBehaviour
 {
+    [Header("Stars")]
     [SerializeField]  private List<GameObject> starImagesHalf;
     [SerializeField]  private List<GameObject> starFullImages;
 
+    [Header("Final Image")]
     [SerializeField] private Image endImage;
     [SerializeField]  private List<Sprite> EndingSrpite;
 
+    [Header("Final Text")]
+    [SerializeField] private TMP_Text  text;
+    [SerializeField] private List<string>  commentarys;
+    
+    
     [Range(0,5)]
     public float score = 0;
 
     private void Start()
     {
+        if (FindObjectOfType<Scr_Score>())
+        {   
+            score = FindObjectOfType<Scr_Score>().score;
+
+        }
+        
         Calculate();
+
     }
 
     private void Update()
     {
-       // Calculate();
+       //Calculate();
     }
 
     void Calculate()
     {
         endImage.sprite = EndingSrpite[0];
-        if (FindObjectOfType<Scr_Score>())
-        {   
-            score = FindObjectOfType<Scr_Score>().score;
+
+
+        if (score < 2.5)
+        {
+            endImage.sprite = EndingSrpite[0];
+
+        }
+        else
+        {
+            endImage.sprite = EndingSrpite[1];
 
         }
 
@@ -71,7 +93,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[0].SetActive(true);
             starFullImages[1].SetActive(true);
             starImagesHalf[2].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
@@ -81,7 +102,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[0].SetActive(true);
             starFullImages[1].SetActive(true);
             starFullImages[2].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
@@ -92,7 +112,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[1].SetActive(true);
             starFullImages[2].SetActive(true);
             starImagesHalf[3].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
@@ -103,7 +122,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[1].SetActive(true);
             starFullImages[2].SetActive(true);
             starFullImages[3].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
@@ -116,7 +134,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[2].SetActive(true);
             starFullImages[3].SetActive(true);
             starImagesHalf[4].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
@@ -129,7 +146,6 @@ public class Scr_UIStars : MonoBehaviour
             starFullImages[2].SetActive(true);
             starFullImages[3].SetActive(true);
             starFullImages[4].SetActive(true);
-            endImage.sprite = EndingSrpite[1];
 
             
         }
