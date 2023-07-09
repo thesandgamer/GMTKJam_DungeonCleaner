@@ -37,12 +37,20 @@ public class Scr_Broom : Scr_Tool
 
     public override void Pressed(GameObject on)
     {
-        cleaningObject = on;
-        LifeBar.SetActive(true);
+        if (on.GetComponent<Scr_Interactible>())
+        {
+            if (on.GetComponent<Scr_Interactible>().objectType == InteractibleType.BLOOD)
+            {
+                cleaningObject = on;
+                LifeBar.SetActive(true);
 
-        canWork = true;
+                canWork = true;
         
-        playerManager.Immobilise();
+                playerManager.Immobilise();
+            }
+
+        }
+    
     }
 
     public override void Released(GameObject on)
