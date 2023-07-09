@@ -110,7 +110,7 @@ public class Scr_Broom : Scr_Tool
         
         cleaningObject.GetComponent<Scr_Dirt>().Interacted(gameObject);
         
-        Invoke("HideLifeBar",1);
+        Invoke("HideLifeBar",.1f);
 
     }
     

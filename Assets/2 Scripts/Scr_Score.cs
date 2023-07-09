@@ -17,14 +17,13 @@ public class Scr_Score : MonoBehaviour
 
     public float score = 0;
 
-    private Scr_Timer Timer;
+    [SerializeField] private Scr_Timer Timer;
     
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
 
-        Timer = FindObjectOfType<Scr_Timer>();
 
         // float score = CalculateScore();
         // Debug.Log("Score: "+CalculateScore());
@@ -33,6 +32,7 @@ public class Scr_Score : MonoBehaviour
 
     public void CalculateScore()
     {
+        Debug.Log("SCORE CALCULATING");
         //---Boss in final room
         ///----------Trap Score
         Scr_Trap[] traps = FindObjectsOfType<Scr_Trap>();
@@ -55,7 +55,13 @@ public class Scr_Score : MonoBehaviour
         chestScore /= chests.Length;
         
         ///----------Blood Score
-        float bloodScore = bloodNumber / FindObjectsOfType<Scr_Dirt>().Length;
+        float bloodScore = 1;
+        int numberOfBlood = FindObjectsOfType<Scr_Dirt>().Length;
+        if (numberOfBlood == 0)
+        {
+            bloodScore = 0;
+        }
+        bloodScore = bloodNumber / numberOfBlood;
         //bloodScore /= bloodNumber;
         
         ///----------Broken Score
