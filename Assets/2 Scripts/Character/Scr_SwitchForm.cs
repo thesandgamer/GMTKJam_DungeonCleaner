@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -16,12 +17,16 @@ public class Scr_SwitchForm : MonoBehaviour
 
     private S_PlayerController pc;
 
-    [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private SpriteRenderer handSprite;
+    [SerializeField] private Animator Animator;
 
     public event Action<state> ev_ChangeForm;
 
-    [SerializeField] private Sprite bigMan;
-    [SerializeField] private Sprite smallMan;
+    [SerializeField] private Sprite bigHand;
+    [SerializeField] private Sprite smallHand;
+    
+    [SerializeField] private AnimatorController big;
+    [SerializeField] private AnimatorController small;
     
 
     private void Awake()
@@ -35,13 +40,17 @@ public class Scr_SwitchForm : MonoBehaviour
         if (form == state.SMALL)
         {
             form = state.BIG;
-            _sprite.sprite = bigMan;
+            handSprite.sprite = bigHand;
+            Animator.runtimeAnimatorController = big;
+            
             Debug.Log("BIG FORM");
         }
         else
         {
             form = state.SMALL;
-            _sprite.sprite = smallMan;
+            handSprite.sprite = smallHand;
+            Animator.runtimeAnimatorController = small;
+
             Debug.Log("SMALL FORM");
 
 

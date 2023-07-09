@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 3
-  canBeTakenState: 2
+  canBeTakenState: 0
 --- !u!114 &41971062016832518
 MonoBehaviour:
   m_ObjectHideFlags: 0

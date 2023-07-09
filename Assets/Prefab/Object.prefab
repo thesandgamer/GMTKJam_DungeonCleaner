@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 1
-  canBeTakenState: 0
+  canBeTakenState: 1
 --- !u!1 &2874920977605704244
 GameObject:
   m_ObjectHideFlags: 0
