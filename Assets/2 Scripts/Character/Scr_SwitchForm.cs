@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public enum state
 {
@@ -26,7 +26,10 @@ public class Scr_SwitchForm : MonoBehaviour
     
     [SerializeField] private RuntimeAnimatorController  big;
     [SerializeField] private RuntimeAnimatorController  small;
-    
+
+    [SerializeField] private Sprite UItoBig;
+    [SerializeField] private Sprite UItoSmall;
+    [SerializeField] private Image UISwitch;
 
     private void Awake()
     {
@@ -42,7 +45,7 @@ public class Scr_SwitchForm : MonoBehaviour
             form = state.BIG;
             handSprite.sprite = bigHand;
             Animator.runtimeAnimatorController = big;
-            
+            UISwitch.sprite = UItoBig;
             Debug.Log("BIG FORM");
         }
         else
@@ -50,7 +53,7 @@ public class Scr_SwitchForm : MonoBehaviour
             form = state.SMALL;
             handSprite.sprite = smallHand;
             Animator.runtimeAnimatorController = small;
-
+            UISwitch.sprite = UItoSmall;
             Debug.Log("SMALL FORM");
 
 
