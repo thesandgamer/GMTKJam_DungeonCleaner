@@ -54,15 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3665324620303389219, guid: ddcecca93a28061468b39c854daa0bf6, type: 3}
       propertyPath: m_Name
-      value: Door Variant
+      value: DoorOpen
       objectReference: {fileID: 0}
     - target: {fileID: 4312817900014268930, guid: ddcecca93a28061468b39c854daa0bf6, type: 3}
       propertyPath: isOpen
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5665572446857209569, guid: ddcecca93a28061468b39c854daa0bf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
