@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Scr_Chest : Scr_Interactible
 {
+    
+    [SerializeField] private SpriteRenderer sprite;
+
+    [SerializeField] private Sprite normalSprite;
+
+
+
     private bool closed = true;
     public override void Interacted(GameObject objectInteractedWith)  
     {
@@ -11,6 +18,7 @@ public class Scr_Chest : Scr_Interactible
 
         if (objectInteractedWith.GetComponent<Scr_Takable>().ObjectType == ObjectType.GOLD)
         {
+            sprite.sprite = normalSprite;
             print(gameObject.name + "Have been interacted with" + (objectInteractedWith!=null ? objectInteractedWith.name : "nothing" ) );
             Destroy(objectInteractedWith);
             closed = false;

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Scr_TrapActivator : Scr_Interactible
 {
     [SerializeField] private Scr_Trap trap;
+    
+
     public override void Interacted(GameObject objectInteractedWith)  
     {
         if (!trap.armed) //Si le piège n'est pas déjà armé
@@ -18,6 +20,7 @@ public class Scr_TrapActivator : Scr_Interactible
 
     private void RearmTrap()
     {
-        trap.armed = true;
+        trap.Rearm();
+
     }
 }
