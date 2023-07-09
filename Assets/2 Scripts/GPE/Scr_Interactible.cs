@@ -8,6 +8,7 @@ public enum InteractibleType
     DOOR,
     TRAP,
     BROKEN_OBJECT,
+    TRAPDOOR,
 }
 
 /// <summary>

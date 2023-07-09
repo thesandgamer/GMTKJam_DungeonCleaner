@@ -14,6 +14,7 @@ public class Scr_Interact : MonoBehaviour
     
     private S_PlayerController pc;
     private Scr_Take takeComponent;
+    private Scr_SwitchForm switchForm;
     
     private GameObject nearObject= null;
     
@@ -24,6 +25,7 @@ public class Scr_Interact : MonoBehaviour
     {
         pc = GetComponent<S_PlayerController>();
         takeComponent = GetComponent<Scr_Take>();
+        switchForm = GetComponent<Scr_SwitchForm>();
     }
 
     void Interact()
@@ -52,7 +54,10 @@ public class Scr_Interact : MonoBehaviour
                 {
                     if (nearObject.GetComponent<Scr_BrokenObject>())
                     {
-                    
+                        if (nearObject.GetComponent<Scr_BrokenObject>().broken)
+                        {
+                            takeComponent.objectInHand.GetComponent<Scr_Hammer>().ShowUi();
+                        }
                     }
                     else
                     {
@@ -104,8 +109,16 @@ public class Scr_Interact : MonoBehaviour
                 if (nearObject.GetComponent<Scr_Takable>())
                 {
                     //Si état à prendre de l'objet est le même que l'état du player
-                  //  if (  nearObject.GetComponent<Scr_Takable>().canBeTakenLittle )
-                    takeComponent.TakeObject(nearObject);
+                    if (nearObject.GetComponent<Scr_Takable>().canBeTakenState == state.BOTH)
+                    {
+                        takeComponent.TakeObject(nearObject);
+
+                    }
+                    else if (nearObject.GetComponent<Scr_Takable>().canBeTakenState == switchForm.form)
+                    {
+                        takeComponent.TakeObject(nearObject);
+
+                    }
                 }
             }
 
@@ -142,6 +155,8 @@ public class Scr_Interact : MonoBehaviour
         pc.ev_Interact +=  Interact;
         pc.ev_StartInteract +=  StartInteract;
         pc.ev_StopInteract +=  EndInteract;
+
+        switchForm.ev_ChangeForm += ctx => CheckDropItem(ctx);
     }
     private void OnDisable()
     {
@@ -149,7 +164,14 @@ public class Scr_Interact : MonoBehaviour
         pc.ev_StartInteract -=  StartInteract;
         pc.ev_StopInteract -=  EndInteract;
     }
-    
+
+    void CheckDropItem(state state)
+    {
+        if (takeComponent.objectInHand.GetComponent<Scr_Takable>().canBeTakenState != state)
+        {
+            takeComponent.ReleaseObject(null);
+        }
+    }
     
     private void OnDrawGizmos()
     {

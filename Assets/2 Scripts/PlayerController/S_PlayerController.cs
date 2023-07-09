@@ -12,6 +12,8 @@ public class S_PlayerController : MonoBehaviour
 
    private bool moveKeyPressed = false;
 
+   public bool immobilise = false;
+
    #region Events
 
    public event Action ev_StartMoving;
@@ -21,6 +23,8 @@ public class S_PlayerController : MonoBehaviour
    public event Action ev_StartInteract;
    public event Action ev_Interact;
    public event Action ev_StopInteract;
+
+   public event Action ev_SwitchForm;
    
 
    #endregion
@@ -35,11 +39,23 @@ public class S_PlayerController : MonoBehaviour
       playerInputs.CharacterControls.Interact.canceled += context => ev_StopInteract?.Invoke();
 
       playerInputs.CharacterControls.Interact.performed += context => Interact();
+      
+      playerInputs.CharacterControls.Switch.performed += context => SwichForm();
+      
+      
 
+   }
+
+   private void SwichForm()
+   {
+      if (immobilise) return;
+      ev_SwitchForm?.Invoke();
    }
 
    private void StartMoving()
    {
+      if (immobilise) return;
+
       ev_StartMoving?.Invoke();
       moveKeyPressed = true;
       moveValue = playerInputs.CharacterControls.Move.ReadValue<Vector2>();
@@ -47,6 +63,8 @@ public class S_PlayerController : MonoBehaviour
 
    private void StopMoving()
    {
+      if (immobilise) return;
+
       ev_StopMoving?.Invoke();
       moveKeyPressed = false;
       moveValue = playerInputs.CharacterControls.Move.ReadValue<Vector2>();
@@ -54,6 +72,8 @@ public class S_PlayerController : MonoBehaviour
 
    private void Interact()
    {
+      if (immobilise) return;
+
       ev_Interact?.Invoke();
    }
 
@@ -65,6 +85,8 @@ public class S_PlayerController : MonoBehaviour
 
    private void Move()
    {
+      if (immobilise) return;
+
       moveValue = playerInputs.CharacterControls.Move.ReadValue<Vector2>();
       ev_Move.Invoke(moveValue);
    }

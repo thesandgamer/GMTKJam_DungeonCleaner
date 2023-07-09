@@ -10,33 +10,43 @@ public class Scr_PlayerManager : MonoBehaviour
 
     private S_Move_Phyiscs movement;
     private Scr_Interact interact;
+    private Scr_PlayerManager _playerManager;
+    private S_PlayerController pc;
     private void Awake()
     {
         movement = GetComponent<S_Move_Phyiscs>();
         interact = GetComponent<Scr_Interact>();
+        pc = GetComponent<S_PlayerController>();
     }
 
 
     private void OnEnable()
     {
-        interact.ev_StartInteracting += StartInteracting;
-        interact.ev_StartInteracting += StoptInteracting;
+       // interact.ev_StartInteracting += StartInteracting;
+       // interact.ev_StopInteracting += StopInteracting;
     }
 
-    private void StartInteracting()
+    public void Immobilise()
     {
         movement.Immobilise();
+        pc.immobilise = true;
+
+        //Debug.Log("IMMOBILISE");
     }
     
-    private void StoptInteracting()
+    public void Remobilise()
     {
-        movement.Remobilise();
+       movement.Remobilise();
+       pc.immobilise = false;
+
+       // Debug.Log("REMOBILISE");
+
 
     }
 
     private void OnDisable()
     {
-        interact.ev_StartInteracting -= StartInteracting;
-        interact.ev_StartInteracting -= StoptInteracting;
+        //interact.ev_StartInteracting -= StartInteracting;
+       // interact.ev_StopInteracting -= StopInteracting;
     }
 }

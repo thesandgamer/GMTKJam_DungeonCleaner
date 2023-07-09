@@ -16,6 +16,8 @@ public class Scr_Broom : Scr_Tool
     [SerializeField] private GameObject LifeBar;
      private Scr_BarFiller filler;
 
+     private Scr_PlayerManager playerManager;
+
 
     private GameObject cleaningObject;
 
@@ -24,6 +26,8 @@ public class Scr_Broom : Scr_Tool
         HideLifeBar();
         filler = GetComponent<Scr_BarFiller>();
         filler.SetMaxValue((float)curve.keys[curve.length-1].time);
+        
+        playerManager = GetComponent<Scr_PlayerManager>();
     }
 
     public override void Clicked(GameObject on)
@@ -37,6 +41,8 @@ public class Scr_Broom : Scr_Tool
         LifeBar.SetActive(true);
 
         canWork = true;
+        
+        playerManager.Immobilise();
     }
 
     public override void Released(GameObject on)
@@ -48,6 +54,8 @@ public class Scr_Broom : Scr_Tool
         {
             Invoke("HideLifeBar",1);
         }
+        playerManager.Remobilise();
+
     }
 
     private void Reset()
@@ -79,7 +87,7 @@ public class Scr_Broom : Scr_Tool
             {
                 filler.SetValue(currentTime);
             }
-            print("Current value:" + currentValue);
+//            print("Current value:" + currentValue);
         }
     }
 

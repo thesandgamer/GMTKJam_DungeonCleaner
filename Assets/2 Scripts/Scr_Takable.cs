@@ -18,7 +18,7 @@ public class Scr_Takable : MonoBehaviour
 {
     [SerializeField] public ObjectType ObjectType;
 
-    public bool canBeTakenLittle = true;//Change to
+    public state canBeTakenState = state.SMALL;//Change to
     void Interacted(GameObject interactWith)
     {
         //En fonction du type d'objet auquel c'est 

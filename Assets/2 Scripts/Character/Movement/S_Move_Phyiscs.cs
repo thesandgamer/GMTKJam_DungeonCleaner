@@ -22,11 +22,19 @@ public class S_Move_Phyiscs : MonoBehaviour
     public void Immobilise()
     {
         canMove = false;
+        _moveInput = Vector2.zero;
+        RB2D.velocity = Vector2.zero;
+
     }
 
     public void Remobilise()
     {
         canMove = true;
+        _moveInput = Vector2.zero;
+        RB2D.velocity = Vector2.zero;
+
+
+
     }
     
     private void Awake()
@@ -52,7 +60,9 @@ public class S_Move_Phyiscs : MonoBehaviour
         _moveInput = axisValues;
         if (axisValues.x != 0)
         {
-            float value = axisValues.normalized.x > 0 ? 1 : -1;
+           // body.flipY = axisValues.normalized.x > 0 ? false : true;
+
+            float value = axisValues.normalized.x > 0 ? 1 : -1; 
             body.transform.localScale = new Vector3(value,body.transform.localScale.y,body.transform.localScale.z);
 
         }

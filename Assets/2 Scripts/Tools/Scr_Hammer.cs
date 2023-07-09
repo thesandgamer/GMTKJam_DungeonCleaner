@@ -9,16 +9,25 @@ public class Scr_Hammer : Scr_Tool
     private int actualNumber = 0;
     
     private GameObject objectToRepair;
-    
+
+    private Scr_UIHammer _uiHammer;
+
+    private void Awake()
+    {
+        _uiHammer = GetComponent<Scr_UIHammer>();
+    }
+
     public override void Clicked(GameObject on)
     {
     }
 
     public override void Pressed(GameObject on)
     {
+        if (!on.GetComponent<Scr_BrokenObject>().broken) return;
         objectToRepair = on;
         if (!objectToRepair.GetComponent<Scr_BrokenObject>().broken) return;
         actualNumber++;
+        _uiHammer.RemoveBubble();
         print("Object bein repared");
         if (actualNumber >= numberToActivateMax)
         {
@@ -33,16 +42,24 @@ public class Scr_Hammer : Scr_Tool
 
     public void Reset()
     {
+
         //Cache l'ui
         actualNumber = 0;
         objectToRepair = null;
         print("HAMMMER RESET");
+        _uiHammer.HideUi();
 
     }
 
+    public void ShowUi()
+    {
+        _uiHammer.ShowUI();
+    }
 
     void Finish()
     {
         objectToRepair.GetComponent<Scr_BrokenObject>().Interacted(gameObject);
+        _uiHammer.HideUi();
+
     }
 }
