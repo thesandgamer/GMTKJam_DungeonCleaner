@@ -15,6 +15,7 @@ public class Data_Movement_Physics : ScriptableObject
 	public float runDecceleration; //The speed at which our player decelerates from their current speed, can be set to runMaxSpeed for instant deceleration down to 0 for none at all
 	[HideInInspector] public float runDeccelAmount; //Actual force (multiplied with speedDiff) applied to the player .
 
+	
 
 	//Unity Callback, called when the inspector updates
     private void OnValidate()

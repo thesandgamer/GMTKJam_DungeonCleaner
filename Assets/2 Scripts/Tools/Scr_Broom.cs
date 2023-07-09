@@ -27,7 +27,7 @@ public class Scr_Broom : Scr_Tool
         filler = GetComponent<Scr_BarFiller>();
         filler.SetMaxValue((float)curve.keys[curve.length-1].time);
         
-        playerManager = GetComponent<Scr_PlayerManager>();
+        playerManager = FindObjectOfType<Scr_PlayerManager>();
     }
 
     public override void Clicked(GameObject on)

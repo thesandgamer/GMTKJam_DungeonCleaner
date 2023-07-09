@@ -18,6 +18,8 @@ public class S_Move_Phyiscs : MonoBehaviour
 
     [SerializeField] private GameObject body;
 
+    public float currentSpeed ;
+
 
     public void Immobilise()
     {
@@ -39,6 +41,8 @@ public class S_Move_Phyiscs : MonoBehaviour
     
     private void Awake()
     {
+        currentSpeed = Data.runMaxSpeed;
+        
         pc = GetComponent<S_PlayerController>();
 
         if (GetComponent<Rigidbody2D>())
@@ -72,7 +76,7 @@ public class S_Move_Phyiscs : MonoBehaviour
 
     void Run()
     {
-        Vector2 targetSpeed = _moveInput * Data.runMaxSpeed;
+        Vector2 targetSpeed = _moveInput * currentSpeed;
         float accelRate;
         accelRate = (Mathf.Abs(targetSpeed.x) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
         Vector2 speedDif;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,24 @@ public class Scr_Trap : MonoBehaviour
 {
     public bool armed = false;
 
-
-    void Activate()
+    private void OnTriggerEnter(Collider other)
     {
         if (armed)
         {
-            //Fait l'effet du piège
-            //Quand une entité passe dessus:
-            //Si c'est le joueur le bloque
-            //Si c'est un mob le tue
-
+            if (other.GetComponent<Scr_PlayerManager>())
+            {
+                armed = false;
+                other.GetComponent<Scr_PlayerManager>().SlowDown();
+            }
         }
     }
 
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Scr_PlayerManager>())
+        {
+            other.GetComponent<Scr_PlayerManager>().NormalSpeed();
+
+        }
+    }
 }

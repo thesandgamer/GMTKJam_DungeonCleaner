@@ -19,6 +19,17 @@ public class Scr_PlayerManager : MonoBehaviour
         pc = GetComponent<S_PlayerController>();
     }
 
+    public void SlowDown()
+    {
+        movement.currentSpeed /= 2;
+    }
+
+    public void NormalSpeed()
+    {
+        movement.currentSpeed *= 2;
+
+    }
+
 
     private void OnEnable()
     {
@@ -43,6 +54,8 @@ public class Scr_PlayerManager : MonoBehaviour
 
 
     }
+    
+    
 
     private void OnDisable()
     {
