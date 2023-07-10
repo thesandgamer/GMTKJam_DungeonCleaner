@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 88706106}
   - component: {fileID: 88706105}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: FinalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,14 +469,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3290114575337176109, guid: 136210c4cacb60d4495e4b4369a4a0c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5054235558271086546, guid: 136210c4cacb60d4495e4b4369a4a0c2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7628320873504215576, guid: 136210c4cacb60d4495e4b4369a4a0c2, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1353,6 +1345,8 @@ MonoBehaviour:
   EndingSrpite:
   - {fileID: 21300000, guid: 497baa85f248cc04596d5d0fa4e3e970, type: 3}
   - {fileID: 21300000, guid: e9578c2900858d5409ab96a7cb0679b1, type: 3}
+  text: {fileID: 88706105}
+  commentarys: []
   score: 0
 --- !u!1 &1310520984
 GameObject:

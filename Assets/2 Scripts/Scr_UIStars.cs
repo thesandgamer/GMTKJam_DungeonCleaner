@@ -37,7 +37,7 @@ public class Scr_UIStars : MonoBehaviour
 
     private void Update()
     {
-       //Calculate();
+       Calculate();
     }
 
     void Calculate()
