@@ -7296,8 +7296,8 @@ MonoBehaviour:
   minText: {fileID: 968732944}
   secText: {fileID: 530344428}
   startTime:
-    min: 0
-    seg: 5
+    min: 3
+    seg: 30
 --- !u!222 &346833486
 CanvasRenderer:
   m_ObjectHideFlags: 0
