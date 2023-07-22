@@ -163,7 +163,8 @@ public class Scr_AudioPlayer : MonoBehaviour
     }
     public void PlayPoppingStarSound()
     {
-        PlaySound(starsSound, 0.5f);
+        PlaySound(starsSound, 0.2f);
+        Debug.Log("Star");
     }
     public void PlayTransitionSound()
     {

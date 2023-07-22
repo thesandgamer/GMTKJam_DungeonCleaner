@@ -25,7 +25,7 @@ public class Scr_Score : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         bloodNumber = FindObjectsOfType<Scr_Dirt>().Length;
 
-
+        Cursor.visible = false;
         // float score = CalculateScore();
         // Debug.Log("Score: "+CalculateScore());
 
