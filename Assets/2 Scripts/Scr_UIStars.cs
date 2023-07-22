@@ -33,7 +33,7 @@ public class Scr_UIStars : MonoBehaviour
         
         Calculate();
         
-        Scr_AudioPlayer.Instance.PlayPoppingStarSound();
+        //Scr_AudioPlayer.Instance.PlayPoppingStarSound();
     }
 
     private void Update()
